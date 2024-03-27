@@ -18,96 +18,100 @@ function App() {
     return pokeList.map((pokemon, key) => {
       return (
         <div className="card-container" key={key}>
-          <div className="title-container">
-            <div className="title">{toSentenceCase(pokemon.name)}</div>
-          </div>
-          <div className="image-container">
-            <img
-              src={
-                pokemon &&
-                pokemon.sprites &&
-                pokemon.sprites.other.showdown.front_default != null
-                  ? pokemon.sprites.other.showdown.front_default
-                  : pokemon && pokemon.sprites
-                  ? pokemon.sprites.front_default
-                  : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/0.png"
-              }
-              className="pokemon-image"
-              alt=""
-            />
-            <img
-              src={
-                pokemon &&
-                pokemon.sprites &&
-                pokemon.sprites.other.showdown.back_default != null
-                  ? pokemon.sprites.other.showdown.back_default
-                  : pokemon && pokemon.sprites
-                  ? pokemon.sprites.back_default
-                  : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/0.png"
-              }
-              className="pokemon-image"
-              alt=""
-            />
-          </div>
-          <div className="base-stats-container">
-            <div className="base-stat">
-              <div className="stat-text">
-                <span className="label">Species: </span>
-                <span className="pokemon">{pokemon.species.name}</span>
+          <div className="card-content">
+            <div className="title-container">
+              <div className="title">{toSentenceCase(pokemon.name)}</div>
+            </div>
+            <div className="image-container">
+              <img
+                src={
+                  pokemon &&
+                  pokemon.sprites &&
+                  pokemon.sprites.other.showdown.front_default != null
+                    ? pokemon.sprites.other.showdown.front_default
+                    : pokemon && pokemon.sprites
+                    ? pokemon.sprites.front_default
+                    : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/0.png"
+                }
+                className="pokemon-image"
+                alt=""
+              />
+              <img
+                src={
+                  pokemon &&
+                  pokemon.sprites &&
+                  pokemon.sprites.other.showdown.back_default != null
+                    ? pokemon.sprites.other.showdown.back_default
+                    : pokemon && pokemon.sprites
+                    ? pokemon.sprites.back_default
+                    : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/0.png"
+                }
+                className="pokemon-image"
+                alt=""
+              />
+            </div>
+            <div className="base-stats-container">
+              <div className="base-stat-item">
+                  <span className="label">Species</span>
+                  <span className="text pokemon">{pokemon.species.name}</span>
+              </div>
+              <div className="v-line"></div>
+              <div className="base-stat-item">
+                  <span className="label">Height</span>
+                  <span className="text pokemon">{pokemon.height / 10} m</span>
+              </div>
+              <div className="v-line"></div>
+              <div className="base-stat-item">
+                  <span className="label">Weight</span>
+                  <span className="text pokemon">{pokemon.weight / 10} kg</span>
+              </div>
+              <div className="v-line"></div>
+              <div className="base-stat-item">
+                  <span className="label">Base Exp</span>
+                  <span className="text pokemon">{pokemon.base_experience}</span>
               </div>
             </div>
-            <div className="base-stat">
-              <div className="stat-text">
-                <span className="label">Height: </span>
-                <span className="pokemon">{pokemon.height / 10}</span> m
+            <div className="stats-section">
+              <div className="stats-wrapper">
+                {pokemon.stats.map((stat, index) => {
+                  return (
+                    <div className="stats-container" key={index}>
+                      <span className="label">
+                        {toSentenceCase(stat.stat.name)}:{" "}
+                      </span>
+                      <div className="text">
+                        <span className="pokemon">{stat.base_stat}</span> pts
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
-            <div className="base-stat">
-              <div className="stat-text">
-                <span className="label">Weight: </span>
-                <span className="pokemon">{pokemon.weight / 10}</span> kg
+            <div className="abilities-section">
+              <div className="section-header">
+                <div className="header-title"><span className='title pokemon'>Ability</span></div>
+                <div className="header-blank"></div>
+              </div>
+              <div className="section-wrapper">
+                {pokemon.abilities.map((ability, index) => {
+                  return (
+                    <>
+                      <div className="ability">
+                        <div className="ability-text">
+                          <span
+                            data-tooltip-id="my-tooltip-1"
+                            data-tooltip-content={ability.ability.description || "No Description"}
+                          >
+                            {toSentenceCase(ability.ability.name)}
+                          </span>
+
+                        </div>
+                      </div>
+                    </>
+                  );
+                })}
               </div>
             </div>
-            <div className="base-stat">
-              <div className="stat-text">
-                <span className="label">Base Exp: </span>
-                <span className="pokemon">{pokemon.base_experience}</span>
-              </div>
-            </div>
-          </div>
-          <div className="stats-section">
-            {pokemon.stats.map((stat, index) => {
-              return (
-                <div className="stats-container" key={index}>
-                  <span className="label">
-                    {toSentenceCase(stat.stat.name)}:{" "}
-                  </span>
-                  <div className="text">
-                    <span className="pokemon">{stat.base_stat}</span> pts
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-          <div className="abilities-section">
-            {/* <div className="section-header">
-              <div className="header-text pokemon">Ability</div>
-            </div> */}
-            {/* <div className="section-wrapper"> */}
-              {pokemon.abilities.map((ability, index) => {
-                return (
-                  <>
-                    <span
-                      data-tooltip-id="my-tooltip-1"
-                      className="ability"
-                      data-tooltip-content={ability.ability.description || "No Description"}
-                    >
-                      {toSentenceCase(ability.ability.name)}
-                    </span>
-                  </>
-                );
-              })}
-            {/* </div> */}
           </div>
         </div>
       );
@@ -132,18 +136,6 @@ function App() {
         <div className="card-wrapper">
           <PokemonList />
         </div>
-        {/* <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a> */}
       </header>
       <Tooltip id="my-tooltip-1" place="bottom" className='tooltip' />
     </div>

@@ -241,7 +241,7 @@
   padding: 3px 5px 3px 5px;
   font-size: 11px;
   gap: 5px;
-  margin: auto;
+  /* margin: auto; */
 }
 
 .label{

@@ -183,6 +183,7 @@
   flex-direction: column;
   align-items: center;
   font-size: 11px;
+  color: #1B233D;
 }
 
 .base-stat-item .label{
@@ -195,13 +196,14 @@
 }
 
 .v-line{
-  border-left: 1px solid white;
+  border-left: 1px solid #1B233D;
   height: 100%;
 }
 
 .ability{
   transform: skew(-20deg);
-  background-color: aquamarine;
+  background-color: #DFC721;
+  color: #1B233D;
 }
 
 .ability-text{
@@ -237,10 +239,12 @@
   align-items: center;
   border: none;
   border-radius: 5px;
-  background-color: aquamarine;
+  background-color: #282c34;
   padding: 3px 5px 3px 5px;
+  color: #DFC721;
   font-size: 11px;
   gap: 5px;
+  width: 45%;
   /* margin: auto; */
 }
 

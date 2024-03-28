@@ -170,6 +170,20 @@
   filter: drop-shadow(5px 5px 5px #222);
 }
 
+.types-section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  padding: 5px;
+  height: 12px;
+  background: linear-gradient(45deg, rgb(4, 159, 187) 0%, rgb(80, 246, 255) 100%);;
+}
+
+.type-image{
+  height: 1em;
+}
+
 .base-stats-container{
   background-color: transparent;
   display: flex;

@@ -50,6 +50,17 @@ function App() {
                 alt=""
               />
             </div>
+            <div className="types-section">
+              {pokemon.types.map((type, key) => {
+                return (
+                  <img
+                    src={process.env.PUBLIC_URL + '/images/types/' + type.type.name + '.png'}
+                    alt={type.type.name}
+                    className='type-image'
+                  />
+                );
+              })}
+            </div>
             <div className="base-stats-container">
               <div className="base-stat-item">
                   <span className="label">Species</span>

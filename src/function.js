@@ -11,12 +11,14 @@ export const searchPokemons = (query, allPokemons) => {
     return "Query harus memiliki minimal 3 karakter.";
   }
 
-  const regex = new RegExp(query);
+  console.log(allPokemons)
 
-  // Melakukan pencarian dengan menggunakan regular expression
-  const searchResults = allPokemons.filter((pokemon) =>
-    regex.test(pokemon.name)
-  );
+  // const regex = new RegExp(query);
 
-  return searchResults;
+  // const searchResults = allPokemons.filter((pokemon) =>
+  //   regex.test(pokemon.name)
+  // );
+
+  // console.log(searchResults)
+  // return searchResults;
 };

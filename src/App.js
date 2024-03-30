@@ -64,32 +64,37 @@ function App() {
                 return (
                   <img
                     key={key}
-                    src={process.env.PUBLIC_URL + '/images/types/' + type.type.name + '.png'}
+                    src={
+                      process.env.PUBLIC_URL +
+                      "/images/types/" +
+                      type.type.name +
+                      ".png"
+                    }
                     alt={type.type.name}
-                    className='type-image'
+                    className="type-image"
                   />
                 );
               })}
             </div>
             <div className="base-stats-container">
               <div className="base-stat-item">
-                  <span className="label">Species</span>
-                  <span className="text pokemon">{pokemon.species.name}</span>
+                <span className="label">Species</span>
+                <span className="text pokemon">{pokemon.species.name}</span>
               </div>
               <div className="v-line"></div>
               <div className="base-stat-item">
-                  <span className="label">Height</span>
-                  <span className="text pokemon">{pokemon.height / 10} m</span>
+                <span className="label">Height</span>
+                <span className="text pokemon">{pokemon.height / 10} m</span>
               </div>
               <div className="v-line"></div>
               <div className="base-stat-item">
-                  <span className="label">Weight</span>
-                  <span className="text pokemon">{pokemon.weight / 10} kg</span>
+                <span className="label">Weight</span>
+                <span className="text pokemon">{pokemon.weight / 10} kg</span>
               </div>
               <div className="v-line"></div>
               <div className="base-stat-item">
-                  <span className="label">Base Exp</span>
-                  <span className="text pokemon">{pokemon.base_experience}</span>
+                <span className="label">Base Exp</span>
+                <span className="text pokemon">{pokemon.base_experience}</span>
               </div>
             </div>
             <div className="stats-section">
@@ -108,9 +113,23 @@ function App() {
                 })}
               </div>
             </div>
+            <span className='move-header'>Moves</span>
+            <div className="stats-section scrollable">
+              {
+                pokemon.moves.map((move, index) => {
+                  return (
+                    <div className="move-container">
+                      <span>{move.move.name}</span>
+                    </div>
+                  );
+                })
+              }
+            </div>
             <div className="abilities-section">
               <div className="section-header">
-                <div className="header-title"><span className='title pokemon'>Ability</span></div>
+                <div className="header-title">
+                  <span className="title pokemon">Ability</span>
+                </div>
                 <div className="header-blank"></div>
               </div>
               <div className="section-wrapper">
@@ -121,11 +140,12 @@ function App() {
                         <div className="ability-text">
                           <span
                             data-tooltip-id="my-tooltip-1"
-                            data-tooltip-content={ability.ability.description || "No Description"}
+                            data-tooltip-content={
+                              ability.ability.description || "No Description"
+                            }
                           >
                             {toSentenceCase(ability.ability.name)}
                           </span>
-
                         </div>
                       </div>
                     </>
